@@ -1,0 +1,171 @@
+<!--
+
+    © abilash.link
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Project Showcase of Contact Form" />
+    <meta property="og:title" content="Contact Form Project">
+    <meta property="og:type" content="website">
+    <meta property="og:theme-color" content="#FFFFF">
+    <meta name="og:description" content="Project Showcase of Contact Form">
+    <meta property="og:image" content="files/contact.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="author" content="Abilash SANJAYAN">
+    <title>Contact Form Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <div class="navbar-name-hl">
+                <a class="navbar-brand fw-bold" href="portfolio.html">Abilash</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html#skills">Skills</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#">Projects</a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="portfolio.html#projects">Projects List</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="transcript.html">Discord Bot Project</a></li>
+                            <li><a class="dropdown-item disabled" href="about_contact.html" tabindex="-1" aria-disabled="true">Contact Form Project</a></li>
+                        </ul>  
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html#eduexp">Education & Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+
+        <div class="header">
+            <img src="files/contact.png" alt="logo">
+            <h1>Contact Form Project</h1>
+            <p>Showcasing features and functionality</p>
+            <a href="portfolio.html" class="btn btn-outline-primary btn-home">Back to Home</a>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <h5>SMTP-Based Email Sending</h5>
+                    <p>Send reliable outbound emails via configurable SMTP providers.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <h5>Multiple Authentication Methods</h5>
+                    <p>Supports Google and Discord OAuth for quick, secure sign-in flows.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <h5>Manual Email Login (Domain Restriction)</h5>
+                    <p>Allow email/password login with optional domain whitelist to restrict access.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <h5>OTP Verification</h5>
+                    <p>One-time password flow to verify users and prevent spam or fake submissions.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <h5>Unique Submission ID</h5>
+                    <p>Each contact form submission receives a unique ID for tracking and replies.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <h5>HTML-Based Emails</h5>
+                    <p>Rich, well-formatted HTML emails for better readability and branding.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <h5>Owner Reply From Email</h5>
+                    <p>Site owner can reply directly to submissions from their mailbox, preserving threads.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <h5>Env Toggle for Login Methods</h5>
+                    <p>Enable or disable Google/Discord/manual login with environment variables.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="feature-card">
+                    <h5>User-Friendly Interface</h5>
+                    <p>Clean, accessible UI with clear validation messages and responsive layout.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5 mb-3">Front Page of Contact Form</h3>
+        <img src="https://camo.githubusercontent.com/9ccc946464024c44f8dd31eca5f5ac5db8221918c2a59b20f819d602c36a40a0/68747470733a2f2f6162696c6173682e6c696e6b2f6170692f75706c6f6164732f696d616765283137292e706e67" class="d-block mx-auto mb-3"
+            style="width: 80%; height: 40%; border:solid; border-color: #5eb9b2;" alt="Screenshot 6">
+
+
+    </div>
+
+
+    <footer class="py-4" style="background-color: #06101f;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-1">&copy; 2026 Abilash SANJAYAN. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="social-icons mb-1">
+                        <a href="https://github.com/abilash-dev/" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/abilash-sanjayan" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/abilash_2409" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
