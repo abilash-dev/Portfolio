@@ -75,7 +75,12 @@
                     <img src="/files/profile.jpg" alt="Profile" class="profile-img mb-4">
                 </div>
                 <div class="col-lg-8 namespace">
-                    <h1 class="display-4 fw-bold mb-3">Abilash SANJAYAN</h1>
+                    <h1 class="display-4 fw-bold mb-2">Abilash SANJAYAN</h1>
+                    <div class="location-item">
+                        <div>
+                            <p class="mb-0">Colombo, Sri Lanka</p>
+                        </div>
+                    </div>
                     <div class="typewriter-container">
                         <span class="typewriter" id="typewriter-text"></span>
                         <span class="cursor">|</span>
@@ -344,26 +349,16 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="contact-info mb-4">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h5>Location</h5>
-                                <p class="mb-0">Colombo, Sri Lanka</p>
-                            </div>
+                        <div class="mb-3">
+                            <label for="formSubject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="formSubject" placeholder="Message Subject" required>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h5>Email</h5>
-                                <p class="mb-0">contact@abilash.link</p>
-                            </div>
+                        <div class="mb-3">
+                            <label for="formMessage" class="form-label">Description</label>
+                            <textarea class="form-control" id="formMessage" rows="5" placeholder="Your message here..." required></textarea>
                         </div>
                         <div class="text-center mt-4">
-                            <a href="mailto:contact@abilash.link" class="btn btn-primary btn-lg">Send Me an Email</a>
+                            <button type="button" class="btn btn-primary btn-lg" onclick="sendMessage()">Send Me an Email</button>
                         </div>
                     </div>
                 </div>

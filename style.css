@@ -65,7 +65,15 @@ body {
 
 .section-title {
     position: relative;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+.location-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    justify-content: left;
+    color: lightgray;
 }
 
 .section-title::after {
@@ -149,11 +157,17 @@ body {
     .card-footer {
         text-align: center;
     }
+    .location-item {
+        justify-content: center;
+    }
 }
 
 @media (max-width:1000px) {
     .namespace {
         text-align: center;
+    }
+    .location-item {
+        justify-content: center;
     }
 }
 
@@ -291,9 +305,13 @@ footer {
 
 .cursor {
     display: inline-block;
-    width: 3px;
-    background-color: var(--primary-color);
-    margin-left: 0.1rem;
+    color: var(--primary-color);
+    background-color: transparent;
+    width: auto;
+    margin-left: 0.25rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1;
     animation: blink 1s infinite;
 }
 
@@ -322,6 +340,8 @@ footer {
     align-items: center;
     margin-bottom: 1.5rem;
 }
+
+
 
 .contact-icon {
     width: 50px;

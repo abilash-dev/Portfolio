@@ -23,7 +23,7 @@ backToTopButton.addEventListener('click', function (e) {
 });
 
 const typewriterText = document.getElementById('typewriter-text');
-const texts = ['IT Undergraduate', 'Web Developer', 'Desktop App Developer', 'Discord Bot Developer', 'Graphic Designer', 'Tech Explorer'];
+const texts = ['IT Undergraduate', 'Web Developer', 'Desktop App Developer', 'Discord Bot Developer', 'Graphic Designer', 'Tech Explorer', 'Freelancer'];
 let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -69,3 +69,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+function sendMessage() {
+  const subject = document.getElementById('formSubject').value;
+  const message = document.getElementById('formMessage').value;
+  if (subject && message) {
+    const mailtoLink = `mailto:contact@abilash.link?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+    window.location.href = mailtoLink;
+  } else {
+    alert('All fields are required.');
+  }
+}
