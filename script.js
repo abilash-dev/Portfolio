@@ -73,9 +73,42 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 function sendMessage() {
   const subject = document.getElementById('formSubject').value;
   const message = document.getElementById('formMessage').value;
+
   if (subject && message) {
     const mailtoLink = `mailto:contact@abilash.link?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-    window.location.href = mailtoLink;
+    const newWindow = window.open('', '_blank');
+    if (newWindow) {
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Redirecting...</title>
+          <style>
+            body { font-family: sans-serif; text-align: center; padding-top: 50px; color: #333; }
+            a { color: #007BFF; text-decoration: none; font-weight: bold; }
+            a:hover { text-decoration: underline; }
+          </style>
+        </head>
+        <body>
+          <h3>Redirecting you to your email application...</h3>
+          <p>If you are not redirected automatically, <a href="${mailtoLink}">click here</a>.</p>
+          
+          <script>
+            setTimeout(function() {
+              window.location.href = "${mailtoLink}";
+            }, 1000);
+          </script>
+        </body>
+        </html>
+      `;
+      newWindow.document.write(htmlContent);
+      newWindow.document.close();
+      document.getElementById('formSubject').value = '';
+      document.getElementById('formMessage').value = '';
+    } else {
+      alert('Pop-up blocked! Please allow pop-ups for this website to open your email client.');
+    }
+
   } else {
     alert('All fields are required.');
   }
