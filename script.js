@@ -1,3 +1,11 @@
+/*
+
+    © 2026 Abilash Sanjayan. All rights reserved.
+    Do not remove the attribution link to the original project repository without permission.
+    https://github.com/abilash-dev/Portfolio
+
+*/
+
 window.addEventListener('scroll', function () {
   const navbar = document.querySelector('.navbar');
   if (window.scrollY > 50) {
@@ -113,3 +121,11 @@ function sendMessage() {
     alert('All fields are required.');
   }
 }
+
+/*
+
+    © 2026 Abilash Sanjayan. All rights reserved.
+    Do not remove the attribution link to the original project repository without permission.
+    https://github.com/abilash-dev/Portfolio
+
+*/
