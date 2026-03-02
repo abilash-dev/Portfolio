@@ -141,7 +141,13 @@ body {
 
 @media (max-width: 400px) {
     .skill-item h5 {
-        display: none;
+        font-size: 0.85rem;
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+
+    .skill-item i {
+        font-size: 1.5rem;
     }
 
     .skill-item {
