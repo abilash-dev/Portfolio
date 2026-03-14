@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://abilash.link/internal/sitemap.xml
+Sitemap: https://portfolio.abilash.link/sitemap.xml
