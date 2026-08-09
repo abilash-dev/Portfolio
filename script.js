@@ -6,6 +6,101 @@
 
 */
 
+// Canvas Background Animation
+const canvas = document.getElementById('bg-canvas');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.5;
+      this.vy = (Math.random() - 0.5) * 0.5;
+      this.radius = Math.random() * 1.5;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > width) this.vx = -this.vx;
+      if (this.y < 0 || this.y > height) this.vy = -this.vy;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0, 243, 255, 0.5)';
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    let numParticles = (width * height) / 15000;
+    for (let i = 0; i < numParticles; i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, width, height);
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+      for (let j = i + 1; j < particles.length; j++) {
+        let dx = particles[i].x - particles[j].x;
+        let dy = particles[i].y - particles[j].y;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 100) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(0, 243, 255, ${0.2 - dist/500})`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(animateParticles);
+  }
+
+  initParticles();
+  animateParticles();
+}
+
+// Intersection Observer for scroll animations
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.skill-item, .project-card, .timeline-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'all 0.6s ease-out';
+    observer.observe(el);
+});
+
 window.addEventListener('scroll', function () {
   const navbar = document.querySelector('.navbar');
   if (window.scrollY > 50) {
@@ -78,47 +173,58 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-function sendMessage() {
+async function sendMessage() {
   const subject = document.getElementById('formSubject').value;
+  const email = document.getElementById('formEmail').value;
   const message = document.getElementById('formMessage').value;
+  const output = document.getElementById('terminal-output');
 
-  if (subject && message) {
-    const mailtoLink = `mailto:contact@abilash.link?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-    const newWindow = window.open('', '_blank');
-    if (newWindow) {
-      const htmlContent = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <title>Redirecting...</title>
-          <style>
-            body { font-family: sans-serif; text-align: center; padding-top: 50px; color: #333; }
-            a { color: #007BFF; text-decoration: none; font-weight: bold; }
-            a:hover { text-decoration: underline; }
-          </style>
-        </head>
-        <body>
-          <h3>Redirecting you to your email application...</h3>
-          <p>If you are not redirected automatically, <a href="${mailtoLink}">click here</a>.</p>
-          
-          <script>
-            setTimeout(function() {
-              window.location.href = "${mailtoLink}";
-            }, 1000);
-          </script>
-        </body>
-        </html>
-      `;
-      newWindow.document.write(htmlContent);
-      newWindow.document.close();
-      document.getElementById('formSubject').value = '';
-      document.getElementById('formMessage').value = '';
-    } else {
-      alert('Pop-up blocked! Please allow pop-ups for this website to open your email client.');
+  if (!subject || !email || !message) {
+    if (output) output.innerHTML = '<span style="color: #ff3333;">[ERROR] Mission failed. All fields are required.</span>';
+    else alert('All fields are required.');
+    return;
+  }
+
+  if (output) {
+    output.innerHTML = 'Encrypting payload...<br>';
+    
+    try {
+        // You must get a free Access Key from https://web3forms.com/ and paste it below
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                access_key: 'aa590e15-4368-47c9-8f77-fa70ceca4d48',
+                subject: subject,
+                from_name: email,
+                email: email,
+                message: message
+            })
+        });
+        
+        const result = await response.json();
+        
+        setTimeout(() => {
+            output.innerHTML += 'Establishing secure connection to server...<br>';
+            setTimeout(() => {
+                if (response.status === 200) {
+                    output.innerHTML += '<span style="color: #00f3ff;">[SUCCESS] Payload delivered successfully. Secure connection closed.</span>';
+                    document.getElementById('formSubject').value = '';
+                    document.getElementById('formEmail').value = '';
+                    document.getElementById('formMessage').value = '';
+                } else {
+                    output.innerHTML += `<span style="color: #ff3333;">[ERROR] Transmission failed: ${result.message || 'Unknown error'}</span>`;
+                }
+            }, 600);
+        }, 600);
+    } catch (error) {
+        setTimeout(() => {
+            output.innerHTML += '<span style="color: #ff3333;">[ERROR] Connection terminated unexpectedly. Network failure.</span>';
+        }, 800);
     }
-
-  } else {
-    alert('All fields are required.');
   }
 }
 
