@@ -189,17 +189,14 @@ async function sendMessage() {
     output.innerHTML = 'Encrypting payload...<br>';
     
     try {
-        // You must get a free Access Key from https://web3forms.com/ and paste it below
-        const response = await fetch('https://api.web3forms.com/submit', {
+        const response = await fetch('https://formspree.io/f/mvkpkple', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                access_key: 'aa590e15-4368-47c9-8f77-fa70ceca4d48',
                 subject: subject,
-                from_name: email,
                 email: email,
                 message: message
             })
@@ -216,7 +213,7 @@ async function sendMessage() {
                     document.getElementById('formEmail').value = '';
                     document.getElementById('formMessage').value = '';
                 } else {
-                    output.innerHTML += `<span style="color: #ff3333;">[ERROR] Transmission failed: ${result.message || 'Unknown error'}</span>`;
+                    output.innerHTML += `<span style="color: #ff3333;">[ERROR] Transmission failed: ${result.error || 'Server rejected the request.'}</span>`;
                 }
             }, 600);
         }, 600);
